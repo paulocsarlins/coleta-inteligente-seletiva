@@ -7,7 +7,7 @@ def welcome(request):
     return JsonResponse(content)
 
 @api_view(["GET"])
-def users(rquest):
+def users(request):
     users = [
         {'name':'Paulo','email':'paulo@gmail.com'}
     ]
