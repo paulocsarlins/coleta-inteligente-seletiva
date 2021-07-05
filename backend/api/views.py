@@ -1,5 +1,7 @@
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse
-from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
 
 @api_view(["GET"])
 def welcome(request):
@@ -7,6 +9,8 @@ def welcome(request):
     return JsonResponse(content)
 
 @api_view(["GET"])
+@csrf_exempt
+@permission_classes([IsAuthenticated])
 def users(request):
     users = [
         {'name':'Paulo','email':'paulo@gmail.com'}
