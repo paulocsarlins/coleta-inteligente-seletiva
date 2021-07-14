@@ -1,17 +1,17 @@
 <template>
-  <ul>
-    <li v-for="user of users" v-bind:key="user">
-      {{user.name}} - {{user.email}}
-    </li>
-  </ul>
+  <div>
+    <list-companies></list-companies>
+  </div>
 </template>
 
 <script>
-import axios from 'axios'
-
+import ListCompanies from './components/companies/ListCompanies.vue'
 
 export default {
   name: 'App',
+  components: {
+    ListCompanies
+  },
   data(){
     return {
       users: []
@@ -20,21 +20,19 @@ export default {
   },
   created: function(){
     
-    /*axios.post('http://localhost:8000/registration/', {'username': '', 'password1': '', 'password2': ''})
-      .then(result => console.log(result))
-        .error(error => console.log(error));
-    */
-    
-    axios.get('http://localhost:8000/api/users')
-      .then(result => {
-        this.users = result.data;
-      }).catch(error => {
-        console.log(error);
-      }) 
   }
 }
 </script>
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100&display=swap');
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  zoom: 0.9;
+}
 </style>
