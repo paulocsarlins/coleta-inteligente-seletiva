@@ -7,7 +7,7 @@
           <li><a href="sass.html">Início</a></li>
           <li><a href="badges.html">Denúncias</a></li>
           <li><a href="badges.html">Dicas</a></li>
-          <li><a href="badges.html">Quem somos</a></li>
+          <li><a href="badges.html">Empresas</a></li>
           <li><a href="collapsible.html">Perfil</a></li>
         </ul>
       </div>
@@ -27,7 +27,7 @@ export default {
 <style>
 
 nav.menu-superior {
-  background: #197723;
+  background: #20962B;
 }
 
 nav .brand-logo {
