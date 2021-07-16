@@ -135,4 +135,8 @@ h2 span {
   float: right;
   cursor: pointer;
 }
+
+p {
+    margin-left: 24px;
+}
 </style>
