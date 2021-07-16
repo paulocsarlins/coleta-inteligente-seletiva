@@ -1,16 +1,16 @@
 <template>
   <div>
-    <list-companies></list-companies>
+    <pontos-de-coleta></pontos-de-coleta>
   </div>
 </template>
 
 <script>
-import ListCompanies from './components/companies/ListCompanies.vue'
+import PontosDeColeta from './components/template/PontosDeColeta.vue'
 
 export default {
   name: 'App',
   components: {
-    ListCompanies
+    PontosDeColeta
   },
   data(){
     return {
