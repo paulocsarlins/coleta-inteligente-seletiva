@@ -1,16 +1,16 @@
 <template>
   <div>
-    <list-companies></list-companies>
+    <lista-denuncias></lista-denuncias>
   </div>
 </template>
 
 <script>
-import ListCompanies from './components/companies/ListCompanies.vue'
+import ListaDenuncias from './components/denuncias/ListaDenuncias.vue'
 
 export default {
   name: 'App',
   components: {
-    ListCompanies
+    ListaDenuncias
   },
   data(){
     return {
