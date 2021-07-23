@@ -67,10 +67,10 @@ export default {
     },
     login() {
       if (
-        this.email == "espaco-professor@gmail.com" &&
-        this.senha == "192232"
+        this.email == "teste@gmail.com" &&
+        this.senha == "ipi203"
       ) {
-        this.$router.push({ name: "InicioUsuario" });
+        this.$router.push({ name: "Home" });
       } else {
         (this.email == "" && this.senha == "") ||
           ((this.email == "") != this.senha) == "";
