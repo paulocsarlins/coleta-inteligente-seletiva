@@ -25,25 +25,35 @@
           <div class="card company-card animate__animated animate__fadeInUp animate__delay-1s" v-for="denuncia of denuncias" v-bind:key="denuncia">
             <h5><i class="fas fa-map-marker-alt"></i>
             
-            <a v-if="!denuncia.editar">Endereço: {{denuncia.endereco}} <input v-if="denuncia.editar" type="text" v-model="denuncia.endereco"> </a>
-            <p v-if="!denuncia.editar">Número: {{denuncia.numero}} <input v-if="denuncia.editar" type="text" v-model="denuncia.numero"></p> 
-            <p v-if="!denuncia.editar">Bairro: {{denuncia.bairro}} <input v-if="denuncia.editar" type="text" v-model="denuncia.bairro"></p>
-            <p v-if="!denuncia.editar">Cidade: {{denuncia.cidade}} <input v-if="denuncia.editar" type="text" v-model="denuncia.cidade"></p>
+            <a v-if="!denuncia.editar">Endereço: {{denuncia.endereco}}</a> 
+            <p> <input v-if="denuncia.editar" type="text" v-model="denuncia.endereco"> </p>
+            
+            <p v-if="!denuncia.editar">Número: {{denuncia.numero}}</p> 
+            <p> <input v-if="denuncia.editar" type="text" v-model="denuncia.numero"> </p>
+
+            <p v-if="!denuncia.editar">Bairro: {{denuncia.bairro}}</p> 
+            <p> <input v-if="denuncia.editar" type="text" v-model="denuncia.bairro"> </p>
+            
+            <p v-if="!denuncia.editar">Cidade: {{denuncia.cidade}}</p> 
+            <p> <input v-if="denuncia.editar" type="text" v-model="denuncia.cidade"> </p>
             
             </h5>
             
-            <p v-if="!denuncia.editar">Denúncia: {{denuncia.descricao}} <input v-if="denuncia.editar" type="text" v-model="denuncia.descricao"></p>
-            
+            <p v-if="!denuncia.editar">Denúncia: {{denuncia.descricao}}</p> 
+            <p> <input v-if="denuncia.editar" type="text" v-model="denuncia.descricao"> </p>
 
             <div class="card-actions animate__animated animate__fadeIn animate__delay-2s">
               
-              <span v-if="!denuncia.editar" v-on:click="editInfo(denuncia.id)"><i class="far fa-edit"></i></span>
+              <span v-if="!denuncia.editar" v-on:click="editInfo(denuncia)"><i class="far fa-edit"></i></span>
               <span v-if="!denuncia.editar" v-on:click="remover(denuncia.id)"><i class="far fa-trash-alt"></i></span>
 
-              <span v-if="denuncia.editar" class="confirm-button"><i class="far fa-check-circle"></i></span>
-              <span v-if="denuncia.editar" class="remove-button"><i class="far fa-times-circle"></i></span>
-            
             </div>
+                    
+            <div class="btn-confirma-cancela">
+              <span v-if="denuncia.editar" class="confirm-button"><i class="far fa-check-circle"></i></span>
+              <span v-on:click="cancelEdit(denuncia)" v-if="denuncia.editar" class="remove-button"><i class="far fa-times-circle"></i></span>
+            </div>
+
           </div>
         </div>
       </div>
@@ -76,8 +86,12 @@ export default {
       this.denuncias = this.denuncias.filter((denuncia) => denuncia.id != id);
     },
 
-    editInfo(){
-      
+    editInfo(denuncia) {
+      denuncia.editar = true;
+    },
+
+    cancelEdit(denuncia) {
+      denuncia.editar = false;
     }
   },
 
@@ -165,4 +179,22 @@ p {
 .fa-times-circle{
   color: red;
 }
+
+input {
+  width: 450px!important;
+}
+
+.fa-check-circle, .fa-times-circle{
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.fa-times-circle{
+  margin-left: 10px;
+}
+
+.btn-confirma-cancela{
+  margin-left: 25px;
+}
+
 </style>
