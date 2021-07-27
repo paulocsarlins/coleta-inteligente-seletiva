@@ -26,35 +26,35 @@
 
               <div class="row">
                   <div class="input-field col s6">
-                      <input placeholder="Rua, Praça, Travessa" id="first_name" type="text" class="validate">
+                      <input placeholder="Rua, Praça, Travessa" id="first_name" type="text" class="validate" v-model="endereco">
                         <label for="first_name">Endereço</label>
                   </div>
               </div>
 
                <div class="row">
                   <div class="input-field col s6">
-                      <input placeholder="123" id="first_name" type="text" class="validate">
+                      <input placeholder="123" id="first_name" type="text" class="validate" v-model="numero">
                         <label for="first_name">Número</label>
                   </div>
               </div>
 
                <div class="row">
                   <div class="input-field col s6">
-                      <input placeholder="Centro" id="first_name" type="text" class="validate">
+                      <input placeholder="Centro" id="first_name" type="text" class="validate" v-model="bairro">
                         <label for="first_name">Bairro</label>
                   </div>
               </div>
 
                <div class="row">
                   <div class="input-field col s6">
-                      <input placeholder="Palmares" id="first_name" type="text" class="validate">
+                      <input placeholder="Palmares" id="first_name" type="text" class="validate" v-model="cidade">
                         <label for="first_name">Cidade</label>
                   </div>
               </div>
 
               <div class="row">
-                  <div class="input-field col s6">
-                      <textarea placeholder="Descreva sua denúncia aqui" id="textarea2" class="materialize-textarea"></textarea>
+                  <div class="input-field col s12">
+                      <textarea placeholder="Descreva sua denúncia aqui" id="textarea2" class="materialize-textarea" v-model="denuncia"></textarea>
                       <label for="textarea2">Denúncia</label>
                  </div>
               </div>
@@ -71,7 +71,7 @@
    
           </form>
     
-            <button class="btn waves-effect waves-light btn-denuncia" type="submit" name="action">Enviar denúncia</button>
+            <button v-on:click="enviarDenuncia()" class="btn waves-effect waves-light btn-denuncia" type="submit" name="action">Enviar denúncia</button>
  
         </div>
  
@@ -90,8 +90,28 @@ export default {
   name: 'cadastro-denuncias',
   data(){
     return {
+      endereco: "",
+      bairro: "",
+      cidade: "",
+      denuncia: ""
       
     }
+  },
+
+  methods: {
+    enviarDenuncia: function(){
+      if(
+        this.endereco == "" ||
+        this.bairro == "" ||
+        this.cidade == "" ||
+        this.denuncia == ""
+      ){
+        alert('Os campos devem ser preenchidos')
+      }
+      
+      
+    }
+
   },
   created: function() {
     
