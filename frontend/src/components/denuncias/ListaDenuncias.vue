@@ -50,7 +50,7 @@
             </div>
                     
             <div class="btn-confirma-cancela">
-              <span v-if="denuncia.editar" class="confirm-button"><i class="far fa-check-circle"></i></span>
+              <span v-on:click="confirmEdit(denuncia)" v-if="denuncia.editar" class="confirm-button"><i class="far fa-check-circle"></i></span>
               <span v-on:click="cancelEdit(denuncia)" v-if="denuncia.editar" class="remove-button"><i class="far fa-times-circle"></i></span>
             </div>
 
@@ -88,6 +88,10 @@ export default {
 
     editInfo(denuncia) {
       denuncia.editar = true;
+    },
+
+    confirmEdit() {
+      alert('clicou')
     },
 
     cancelEdit(denuncia) {
