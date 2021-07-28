@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-navbar></header-navbar>
+    <header-navbar />
 
     <nav class="menu-breadcrumb animate__animated animate__fadeIn">
       <div class="nav-wrapper">
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import HeaderNavbar from "../template/HeaderNavbar.vue";
+import HeaderNavbar from "./HeaderNavbar.vue";
 
 export default {
   components: { HeaderNavbar },
