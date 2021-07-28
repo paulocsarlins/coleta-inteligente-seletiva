@@ -5,7 +5,6 @@
         <div class="col s12">
           <a href="#!" class="breadcrumb">Início</a>
           <a href="#!" class="breadcrumb">Denúncias</a>
-          <a href="#!" class="breadcrumb">Cadastro de denúncias</a>
           <a href="#!" class="breadcrumb">Lista de denúncias</a>
         </div>
       </div>
@@ -16,7 +15,7 @@
         <h2 class="animate__animated animate__fadeIn">
           <i class="fas fa-bullhorn"></i>Denúnicas cadastradas
 
-          <span><i class="fas fa-plus-circle"></i></span>
+          <span><i class="fas fa-plus-circle" v-on:click="TelaCadastroDenuncias"></i></span>
           </h2>
 
         <div class="col l12">
@@ -76,6 +75,9 @@ export default {
   },
 
   methods: {
+    TelaCadastroDenuncias() {
+      this.$router.push({ name: "CadastroDenuncias" });
+    },
     remover(id) {
       this.denuncias = this.denuncias.filter((denuncia) => denuncia.id != id);
     },
@@ -91,6 +93,7 @@ export default {
     cancelEdit(denuncia) {
       denuncia.editar = false;
     }
+    
   },
 
   created: function() {
