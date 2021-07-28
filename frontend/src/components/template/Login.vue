@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-navbar />
     <div class="login-form card">
       <div v-if="exibirMensagemErro" class="alert alert-danger">
         <strong>Erro!</strong> E-mail e/ou senha inválido(s).
@@ -52,10 +51,7 @@
 </template>
 
 <script>
-import HeaderNavbar from "./HeaderNavbar.vue";
-
 export default {
-  components: { HeaderNavbar },
   name: "Login",
 
   methods: {

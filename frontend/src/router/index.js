@@ -6,8 +6,7 @@ import Login from '../components/template/Login.vue'
 import Cadastro from '../components/template/Cadastro.vue'
 import CadastroDenuncias from '../components/denuncias/CadastroDenuncias.vue'
 import ListaDenuncias from '../components/denuncias/ListaDenuncias.vue'
-
-
+import ListCompanies from '../components/companies/ListCompanies.vue'
 
 
 
@@ -22,8 +21,7 @@ const routes = [
   { path: '/Cadastro', name: 'Cadastro', component: Cadastro },
   { path: '/CadastroDenuncias', name: 'CadastroDenuncias', component: CadastroDenuncias },
   { path: '/ListaDenuncias', name: 'ListaDenuncias', component: ListaDenuncias },
-
-
+  { path: '/ListaEmpresas', name: 'ListaEmpresas', component: ListCompanies }
 ]
 
 const router = createRouter({

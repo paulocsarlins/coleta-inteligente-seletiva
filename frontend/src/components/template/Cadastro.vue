@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-navbar />
     <div class="cadastro-form card">
       <div class="row">
         <form class="col s12">
@@ -84,10 +83,7 @@
 </template>
 
 <script>
-import HeaderNavbar from "./HeaderNavbar.vue";
-
 export default {
-  components: { HeaderNavbar },
   name: "Cadastro",
 
   data() {

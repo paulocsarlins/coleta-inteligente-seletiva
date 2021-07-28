@@ -1,7 +1,5 @@
 <template>
   <div>
-    <header-navbar />
-
     <nav class="menu-breadcrumb animate__animated animate__fadeIn">
       <div class="nav-wrapper">
         <div class="col s12">
@@ -39,10 +37,7 @@
 </template>
 
 <script>
-import HeaderNavbar from "./HeaderNavbar.vue";
-
 export default {
-  components: { HeaderNavbar },
   name: "home",
   data() {
     return {};

@@ -11,11 +11,12 @@
           ><img src="@/assets/logo.png"
         /></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a v-on:click="TelaHome">Início</a></li>
+          <li><router-link to="/">Início</router-link></li>
           <li><a v-on:click="TelaDenuncia">Denúncias</a></li>
-          <li><a href="badges.html">Dicas</a></li>
-          <li><a href="badges.html">Quem somos</a></li>
-          <li><a href="collapsible.html">Perfil</a></li>
+          <li><a href="javascript:void(0);">Dicas</a></li>
+          <li><router-link to="ListaEmpresas">Empresas</router-link></li>
+          <li><a href="javascript:void(0);">Quem somos</a></li>
+          <li><a href="javascript:void(0);">Perfil</a></li>
         </ul>
       </div>
     </nav>

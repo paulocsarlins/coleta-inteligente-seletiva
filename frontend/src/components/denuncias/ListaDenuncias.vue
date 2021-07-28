@@ -1,7 +1,5 @@
 <template>
   <div>
-    <header-navbar></header-navbar>
-
     <nav class="menu-breadcrumb animate__animated animate__fadeIn">
       <div class="nav-wrapper">
         <div class="col s12">
@@ -62,10 +60,7 @@
 </template>
 
 <script>
-import HeaderNavbar from '../template/HeaderNavbar.vue'
-
 export default {
-  components: { HeaderNavbar },
   name: 'lista-denuncias',
   data(){
     return {
