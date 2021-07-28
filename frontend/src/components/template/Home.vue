@@ -14,13 +14,18 @@
       <form class="form-login-cadastro">
         <div class="row">
           <h1 class="title1">Transforme o mundo ao seu redor</h1>
-          <form class="login-cadastro">
+          <h3 class="title2">
+            Mude seus hábitos e sua formar de descartar seu lixo!
+          </h3>
+
+          <form class="for-login-cadastro">
+            <h5 class="title3">Faça parte dessa mudança!</h5>
             <a
               v-on:click="TelaLogin"
               class="waves-effect waves-light btn btn-large botao-login"
               >LOGIN</a
             >
-            <h4 class="title">ou</h4>
+            <h6 class="title3">OU</h6>
             <a
               v-on:click="TelaCadastro"
               class="waves-effect waves-light btn btn-large botao-cadastrar"
@@ -49,53 +54,67 @@ export default {
     TelaCadastro() {
       this.$router.push({ name: "Cadastro" });
     },
-  },  
+  },
   created: function () {},
 };
-
 </script>
 
 <style>
+body {
+  zoom: 0.8;
+}
 .container {
+  width: 100%;
   display: flex;
-  align-items: center;
+
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .img-home {
-  width: 1000px;
-  height: 1000px;
+  width: 50%;
   margin-top: 1%;
-  margin-left: -15%;
 }
+
 .title1 {
-  margin-top: -20%;
   text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 0.1em 0.1em 0.2em black;
+}
+.title2 {
+  text-align: center;
+  font-size: 3rem;
+  text-shadow: 0 0 0.2em;
+}
+.title3 {
+  font-weight: bold;
 }
 .form-login-cadastro {
-  width: 40vw;
   margin-left: -1vw;
   text-align: center;
-  padding: 203px;
+  width: 50%;
   background: white;
   border-radius: 50px;
-  margin-top: 1%;
 }
-.login-cadastro {
-  width: 25vw;
-  margin-left: -1vw;
+.for-login-cadastro {
   text-align: center;
-  padding: 203px;
-  background: #C4C4C4;
+  padding: 15px;
+  margin-left: 25%;
+  margin-right: 15vw;
+  background: #c4c4c4;
   border-radius: 50px;
-  margin-top: 50%;
+  margin-top: 13%;
 }
 
 .botao-cadastrar,
 .botao-login {
-  width: 90%;
+  width: 50%;
+  margin-left: 0%;
+  margin-right: 0%;
   border-radius: 150px;
   font-weight: bold;
-  margin-left: 15%;
 }
 
 .botao-cadastrar,

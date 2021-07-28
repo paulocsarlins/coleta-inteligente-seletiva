@@ -8,6 +8,7 @@
           
           <a href="#!" class="breadcrumb">Início</a>
           <a href="#!" class="breadcrumb">Denúncias</a>
+          <a href="#!" class="breadcrumb">Lista de denúncias</a>
           <a href="#!" class="breadcrumb">Cadastro de denúncias</a>
  
         </div>
@@ -17,7 +18,7 @@
     <div class="content card">
       <div class="row">
         <h2 class="animate__animated animate__fadeIn">
-          <i class="fas fa-bullhorn"></i>Informe o local, descreva sua denúncia e, se possível, anexe evidências
+          <i class="fas fa-bullhorn"></i>Informe o local, descreva sua denúncia e, se possível, anexe evidências.
 
           </h2>
 

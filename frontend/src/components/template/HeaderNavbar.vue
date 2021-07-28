@@ -12,7 +12,7 @@
         /></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a v-on:click="TelaHome">Início</a></li>
-          <li><a href="badges.html">Denúncias</a></li>
+          <li><a v-on:click="TelaDenuncia">Denúncias</a></li>
           <li><a href="badges.html">Dicas</a></li>
           <li><a href="badges.html">Quem somos</a></li>
           <li><a href="collapsible.html">Perfil</a></li>
@@ -33,6 +33,9 @@ export default {
   methods: {
     TelaHome() {
       this.$router.push({ name: "Home" });
+    },
+    TelaDenuncia() {
+      this.$router.push({ name: "ListaDenuncias" });
     },
   },
 };
