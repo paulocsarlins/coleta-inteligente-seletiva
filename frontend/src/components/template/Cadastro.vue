@@ -138,8 +138,8 @@ export default {
 <style scoped>
 .cadastro-form {
   border-radius: 50px 50px;
-  width: 30vw;
-  margin-left: 35vw;
+  width: 35vw;
+  margin-left: 45vw;
   padding: 25px;
   background: #E5E5E5;
   margin-top: 2%;

@@ -83,8 +83,8 @@ export default {
 
 <style scoped>
 .login-form {
-  width: 30vw;
-  margin-left: 35vw;
+  width: 35vw;
+  margin-left: 45vw;
   text-align: center;
   padding: 25px;
   background: #E5E5E5;

@@ -76,7 +76,6 @@ export default {
         { id: 4 , endereco: 'Travessa Tenente Everaldo', numero: '1365', bairro: 'Santo Onofre', cidade: 'Palmares/PE', descricao:'O lixo não é coletado há 12 dias' },
         { id: 5 , endereco: 'Travessa Luiza Pedroza', numero: '125', bairro: 'Coabe 2', cidade: 'Palmares/PE', descricao:'O carro da coleta não passa há 8 dias' },
         { id: 6 , endereco: 'Praça Paulo Paranhos', numero: '', bairro: 'Centro', cidade: 'Palmares/PE', descricao:'O lixo das lixeiras não está sendo recolhido' },
-         
       ]
     }
   },
