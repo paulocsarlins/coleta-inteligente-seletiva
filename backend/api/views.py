@@ -61,7 +61,8 @@ def delete_company(request, company_id):
     try:
         company = Company.objects.get(id=company_id)
         company.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        serializer = CompanySerializer(company)
+        return JsonResponse({'company': serializer.data}, safe=False, status=status.HTTP_204_NO_CONTENT)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
