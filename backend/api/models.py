@@ -11,3 +11,15 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Denuncia(models.Model):
+    endereco = models.CharField(max_length=200)
+    numero = models.CharField(max_length=5)
+    bairro = models.CharField(max_length=100)
+    cidade = models.CharField(max_length=80)
+    descricao = models.CharField(max_length=250)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.endereco
