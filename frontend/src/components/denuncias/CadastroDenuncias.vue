@@ -6,7 +6,6 @@
           
           <a href="#!" class="breadcrumb">Início</a>
           <a href="#!" class="breadcrumb">Denúncias</a>
-          <a href="#!" class="breadcrumb">Lista de denúncias</a>
           <a href="#!" class="breadcrumb">Cadastro de denúncias</a>
  
         </div>
@@ -70,7 +69,7 @@
    
           </form>
     
-            <button v-on:click="enviarDenuncia()" class="btn waves-effect waves-light btn-denuncia" type="submit" name="action">Enviar denúncia</button>
+            <button v-on:click="insertDenuncia()" class="btn waves-effect waves-light btn-denuncia" type="submit" name="action">Enviar denúncia</button>
  
         </div>
  
@@ -82,6 +81,8 @@
 </template>
 
 <script>
+
+import axios from 'axios'
 
 export default {
   name: 'cadastro-denuncias',
@@ -96,7 +97,7 @@ export default {
   },
 
   methods: {
-    enviarDenuncia: function(){
+    insertDenuncia() {
       if(
         this.endereco == "" ||
         this.bairro == "" ||
@@ -105,9 +106,13 @@ export default {
       ){
         alert('Os campos devem ser preenchidos')
       }
-      
-      
-    }
+
+      axios.post('http://localhost:8000/api/adddenuncia', { endereco: this.endereco, numero: this.numero, bairro: this.bairro, cidade: this.cidade, descricao: this.descricao })
+        .then(() => {
+          alert('Denuncia criada com sucesso!');
+          this.loadDenuncias();
+        }).catch(error => console.log(error));
+    },
 
   },
   created: function() {
