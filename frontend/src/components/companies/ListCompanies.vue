@@ -14,18 +14,18 @@
         <h2 class="animate__animated animate__fadeIn">
           <i class="far fa-building"></i>Empresas cadastradas
 
-          <span><i class="fas fa-plus-circle"></i></span>
+          <span v-on:click="insertCompany()"><i class="fas fa-plus-circle"></i></span>
           </h2>
 
         <div class="col l12">
           <div class="card company-card animate__animated animate__fadeInUp animate__delay-1s" v-for="company of companies" v-bind:key="company">
             <h5><i class="fas fa-store"></i>{{company.name}}</h5>
-            <p>{{company.cnpj}} &bull; {{company.segment}}</p>
+            <p>{{company.cnpj}} &bull; {{company.companyType}}</p>
             <span><i class="fas fa-map-marker-alt"></i>{{company.address}}</span>
 
             <div class="card-actions animate__animated animate__fadeIn animate__delay-2s">
               <span><i class="far fa-edit"></i></span>
-              <span><i class="far fa-trash-alt"></i></span>
+              <span v-on:click="deleteCompany(company)"><i class="far fa-trash-alt"></i></span>
             </div>
           </div>
         </div>
@@ -35,21 +35,39 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'list-companies',
   data(){
     return {
-      companies: [
-        { name: 'Instituto Federal de Pernambuco', segment: 'Educação', cnpj: '31.433.171/0001-38', address: 'Rua X, número 2, Palmares/PE' },
-        { name: 'Coca-cola SA', segment: 'Indústria', cnpj: '81.795.080/0001-10', address: 'Rua Y, número 14, Recife/PE' },
-        { name: 'Pão de Açúcar', segment: 'Alimentos', cnpj: '65.448.277/0001-27', address: 'Rua Z, número 28, Recife/PE' },
-        { name: 'Parque da Jaqueira', segment: 'Lazer', cnpj: '88.975.277/0001-27', address: 'Rua da jaqueira, sem número, Recife/PE' },
-        { name: 'Posto Shell 12', segment: 'Posto de gasolina', cnpj: '32.123.523/0008-17', address: 'Avenida Agamenon Magalhães, 886, Recife/PE' }
-      ]
+      companies: []
     }
   },
   created: function() {
-    
+    this.loadCompanies();
+  },
+  methods: {
+    deleteCompany(company) {
+      axios.delete('http://localhost:8000/api/deletecompany/' + company.id)
+        .then(() => { 
+          alert('Empresa removida com sucesso!'); 
+          this.loadCompanies();
+        }).catch(error => console.log(error));
+    },
+    loadCompanies() {
+      axios.get('http://localhost:8000/api/getcompanies')
+        .then(response => {
+          this.companies = response.data.companies;
+        }).catch(error => console.log(error));
+    },
+    insertCompany() {
+      axios.post('http://localhost:8000/api/addcompany', { "name": "Shopping Rio Mar", "cnpj": "08.853.970/0001-41", "companyType": "Entretenimento", "address": "Av. República do Líbano, 251 - Pina, Recife - PE, 51110-160"})
+        .then(() => {
+          alert('Empresa criada com sucesso!');
+          this.loadCompanies();
+        }).catch(error => console.log(error));
+    }
   }
 }
 </script>
