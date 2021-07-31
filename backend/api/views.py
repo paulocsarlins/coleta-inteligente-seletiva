@@ -63,8 +63,7 @@ def delete_company(request, company_id):
     try:
         company = Company.objects.get(id=company_id)
         company.delete()
-        serializer = CompanySerializer(company)
-        return JsonResponse({'company': serializer.data}, safe=False, status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
@@ -94,8 +93,8 @@ def update_company(request, company_id):
 @csrf_exempt
 @permission_classes([IsAuthenticated])
 def get_denuncias(request):
-    denuncias = Company.objects.all()
-    serializer = CompanySerializer(denuncias, many=True)
+    denuncias = Denuncia.objects.all()
+    serializer = DenunciaSerializer(denuncias, many=True)
     return JsonResponse({'denuncias': serializer.data}, safe=False, status=status.HTTP_200_OK)
 
 @api_view(["POST"])
@@ -125,7 +124,8 @@ def delete_denuncia(request, denuncia_id):
     try:
         denuncia = Denuncia.objects.get(id=denuncia_id)
         denuncia.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        serializer = DenunciaSerializer(denuncia)
+        return JsonResponse({'denuncia': serializer.data}, safe=False, status=status.HTTP_204_NO_CONTENT)
     except ObjectDoesNotExist as e:
         return JsonResponse({'error': str(e)}, safe=False, status=status.HTTP_404_NOT_FOUND)
     except Exception:
