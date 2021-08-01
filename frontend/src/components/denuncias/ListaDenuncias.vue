@@ -41,13 +41,13 @@
 
             <div class="card-actions animate__animated animate__fadeIn animate__delay-2s">
               
-              <span v-if="!denuncia.editar" v-on:click="editInfo(denuncia)"><i class="far fa-edit"></i></span>
-              <span v-if="!denuncia.editar" v-on:click="remover(denuncia.id)"><i class="far fa-trash-alt"></i></span>
+              <span v-if="!denuncia.editar" v-on:click="editeDenuncia(denuncia)"><i class="far fa-edit"></i></span>
+              <span v-if="!denuncia.editar" v-on:click="deleteDenuncia(denuncia)"><i class="far fa-trash-alt"></i></span>
 
             </div>
                     
             <div class="btn-confirma-cancela">
-              <span v-on:click="confirmEdit(denuncia)" v-if="denuncia.editar" class="confirm-button"><i class="far fa-check-circle"></i></span>
+              <span v-on:click="updateDenuncia(denuncia)" v-if="denuncia.editar" class="confirm-button"><i class="far fa-check-circle"></i></span>
               <span v-on:click="cancelEdit(denuncia)" v-if="denuncia.editar" class="remove-button"><i class="far fa-times-circle"></i></span>
             </div>
 
@@ -59,35 +59,59 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'lista-denuncias',
   data(){
     return {
       denuncias: [
-        { id: 1 , endereco: 'Rua Primeiro de Maio', numero: '395', bairro: 'Santa Luzia', cidade: 'Palmares/PE', descricao:'Lixo na calçada' },
+     /*   { id: 1 , endereco: 'Rua Primeiro de Maio', numero: '395', bairro: 'Santa Luzia', cidade: 'Palmares/PE', descricao:'Lixo na calçada' },
         { id: 2 , endereco: 'Rua Ivanildo Lins', numero: '1257', bairro: 'Santa Rosa', cidade: 'Palmares/PE', descricao:'Entulho de construção no meio da rua' },
         { id: 3 , endereco: 'Praça Santo Amaro', numero: '', bairro: 'Santo Amaro', cidade: 'Palmares/PE', descricao:'Lixo na praça' },
         { id: 4 , endereco: 'Travessa Tenente Everaldo', numero: '1365', bairro: 'Santo Onofre', cidade: 'Palmares/PE', descricao:'O lixo não é coletado há 12 dias' },
         { id: 5 , endereco: 'Travessa Luiza Pedroza', numero: '125', bairro: 'Coabe 2', cidade: 'Palmares/PE', descricao:'O carro da coleta não passa há 8 dias' },
         { id: 6 , endereco: 'Praça Paulo Paranhos', numero: '', bairro: 'Centro', cidade: 'Palmares/PE', descricao:'O lixo das lixeiras não está sendo recolhido' },
+        */
       ]
     }
+  },
+
+  created: function() {
+    this.loadDenuncias();
   },
 
   methods: {
     TelaCadastroDenuncias() {
       this.$router.push({ name: "CadastroDenuncias" });
     },
-    remover(id) {
-      this.denuncias = this.denuncias.filter((denuncia) => denuncia.id != id);
+
+    loadDenuncias() {
+      axios.get('http://localhost:8000/api/getdenuncias')
+        .then(response => {
+          this.denuncias = response.data.denuncias;
+        }).catch(error => console.log(error));
     },
 
-    editInfo(denuncia) {
+    deleteDenuncia(denuncia) {
+      axios.delete('http://localhost:8000/api/deletedenuncia/' + denuncia.id)
+        .then(() => { 
+          alert('Denúncia removida com sucesso!'); 
+          this.loadDenuncias();
+        }).catch(error => console.log(error));
+    },
+
+    editeDenuncia(denuncia) {
       denuncia.editar = true;
     },
 
-    confirmEdit() {
-      alert('clicou')
+    updateDenuncia(denuncia) {
+      axios.put('http://localhost:8000/api/getdenuncias' + denuncia.id)
+      .then(() => {
+        alert('Denúncia editada com sucesso!');
+        denuncia.editar = false;
+      }).catch(error => console.log(error));
+        denuncia.editar = false;
+
     },
 
     cancelEdit(denuncia) {
@@ -96,9 +120,7 @@ export default {
     
   },
 
-  created: function() {
-    
-  }
+  
 }
 </script>
 

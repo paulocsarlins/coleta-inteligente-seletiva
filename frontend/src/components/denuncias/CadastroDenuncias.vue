@@ -6,7 +6,6 @@
           
           <a href="#!" class="breadcrumb">Início</a>
           <a href="#!" class="breadcrumb">Denúncias</a>
-          <a href="#!" class="breadcrumb">Lista de denúncias</a>
           <a href="#!" class="breadcrumb">Cadastro de denúncias</a>
  
         </div>
@@ -53,7 +52,7 @@
 
               <div class="row">
                   <div class="input-field col s12">
-                      <textarea placeholder="Descreva sua denúncia aqui" id="textarea2" class="materialize-textarea" v-model="denuncia"></textarea>
+                      <textarea placeholder="Descreva sua denúncia aqui" id="textarea2" class="materialize-textarea" v-model="descricao"></textarea>
                       <label for="textarea2">Denúncia</label>
                  </div>
               </div>
@@ -70,7 +69,7 @@
    
           </form>
     
-            <button v-on:click="enviarDenuncia()" class="btn waves-effect waves-light btn-denuncia" type="submit" name="action">Enviar denúncia</button>
+            <button v-on:click="insertDenuncia()" class="btn waves-effect waves-light btn-denuncia" type="submit" name="action">Enviar denúncia</button>
  
         </div>
  
@@ -82,6 +81,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   name: 'cadastro-denuncias',
@@ -90,25 +90,29 @@ export default {
       endereco: "",
       bairro: "",
       cidade: "",
-      denuncia: ""
+      descricao: ""
       
     }
   },
 
   methods: {
-    enviarDenuncia: function(){
-      if(
-        this.endereco == "" ||
-        this.bairro == "" ||
-        this.cidade == "" ||
-        this.denuncia == ""
-      ){
-        alert('Os campos devem ser preenchidos')
-      }
-      
-      
-    }
 
+  insertDenuncia() {
+    if(
+      this.endereco == "" ||
+       this.bairro == "" ||
+      this.cidade == "" ||
+      this.denuncia == ""
+    ){
+      alert('Os campos devem ser preenchidos')
+    }
+      axios.post('http://localhost:8000/api/adddenuncia', { endereco:this.endereco, numero:this.numero, bairro:this.bairro, cidade:this.cidade, descricao:this.descricao })
+        .then(() => {
+          alert('Denúncia criada com sucesso!');
+          
+        }).catch(error => console.log(error));
+    },
+  
   },
   created: function() {
     
