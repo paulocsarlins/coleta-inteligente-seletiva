@@ -18,4 +18,16 @@ urlpatterns = [
     path('updatedenuncia/<int:denuncia_id>', views.update_denuncia),
     path('deletedenuncia/<int:denuncia_id>', views.delete_denuncia),
 
+    #API DE CADASTROS
+    path('getcadastros', views.get_cadastros),
+    path('addcadastro', views.add_cadastro),
+    path('updatecadastro/<int:cadastro_id>', views.update_cadastro),
+    path('deletecadastro/<int:cadastro_id>', views.delete_cadastro),
+
+    #API DE PONTOS DE COLETA
+    path('getpontosDeColetas', views.get_pontosDeColetas),
+    path('addpontosDeColeta', views.add_pontosDeColeta),
+    path('updatepontosDeColeta/<int:pontosDeColeta_id>', views.update_pontosDeColeta),
+    path('deletepontosDeColeta/<int:pontosDeColeta_id>', views.delete_pontosDeColeta),
+
 ]
