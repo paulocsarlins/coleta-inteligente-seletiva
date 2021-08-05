@@ -100,7 +100,7 @@ export default {
   insertDenuncia() {
     if(
       this.endereco == "" ||
-       this.bairro == "" ||
+      this.bairro == "" ||
       this.cidade == "" ||
       this.denuncia == ""
     ){
