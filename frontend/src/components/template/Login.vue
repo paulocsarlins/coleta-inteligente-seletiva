@@ -73,7 +73,9 @@ export default {
       } else {
         (this.email == "" && this.senha == "") ||
           ((this.email == "") != this.senha) == "";
-        alert("Preencha os campos para fazer login!");
+        alert("Usúario não cadastrado!");
+        
+       
       }
     },
   },
