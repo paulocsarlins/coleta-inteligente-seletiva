@@ -1,5 +1,7 @@
 <template>
   <div>
+    <header-navbar />
+
     <div class="cadastro-form card">
       <div class="row">
         <form class="col s12">
@@ -65,11 +67,12 @@
             </div>
           </div>
           <div class="row">
-            <a
-              v-on:click="insertCadastro"
+            <button
+              v-on:click="insertCadastro()"
               class="waves-effect waves-light btn btn-large botao-cadastro"
-              >CADASTRAR</a
             >
+              CADASTRAR
+            </button>
           </div>
           <div class="row">
             <p class="cancelar-cadastro" v-on:click="TelaHome">
@@ -89,10 +92,11 @@
 
 <script>
 import axios from "axios";
+import HeaderNavbar from "../template/HeaderNavbar.vue";
 
 export default {
-  name: "Cadastro",
-
+  components: { HeaderNavbar },
+  name: "cadastro",
   data() {
     return {
       nome: "",
@@ -110,34 +114,32 @@ export default {
       this.$router.push({ name: "Home" });
     },
 
-    created: function () {
-      this.loadCadastros();
-    },
     insertCadastro() {
-      if(
-      this.nome == "" ||
-      this.email == "" ||
-      this.senha == "" ||
-      this.confirmacaoSenha == ""
-    ){
-      alert('Os campos devem ser preenchidos')
-    }
-      
+      if (
+        this.nome == "" ||
+        this.email == "" ||
+        this.senha == "" ||
+        this.confirmacaoSenha == ""
+      ) {
+        alert("Todos os campos devem ser preenchidos");
+      }
       axios
-        .post("http://localhost:8000/api/addcadastro/", {
+        .post("http://localhost:8000/api/addcadastro", {
           nome: this.nome,
           email: this.email,
           senha: this.senha,
           confirmacaoSenha: this.confirmacaoSenha,
         })
         .then(() => {
-          alert("Cadastro feito com sucesso!");
-          this.loadCadastros();
+          alert("Cadastro criada com sucesso!");
         })
         .catch((error) => console.log(error));
     },
+  },
+  created: function () {},
+};
 
-   /* cadastrar: function () {
+/* cadastrar: function () {
       if (
         this.nome == "" ||
         this.email == "" ||
@@ -161,14 +163,12 @@ export default {
         this.confirmacaoSenha = "";
       }
     },*/
-  },
-};
 </script>
 
 <style scoped>
 .cadastro-form {
   border-radius: 50px 50px;
-  width: 35vw;
+  width: 38vw;
   margin-left: 45vw;
   padding: 25px;
   background: #e5e5e5;
