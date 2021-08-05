@@ -38,6 +38,9 @@ export default {
     TelaDenuncia() {
       this.$router.push({ name: "ListaDenuncias" });
     },
+    TelaPontosDeColeta() {
+      this.$router.push({ name: "PontosDeColeta" });
+    },
   },
 };
 </script>
