@@ -1,16 +1,16 @@
 <template>
-<div>
-     <header-navbar></header-navbar>
-     <router-view />
-</div>
+  <div>    
+    <router-view />
+    <footer-rodape />
+  </div>
 </template>
 <script>
-
-import HeaderNavbar from "./components/template/HeaderNavbar.vue";
+/*import HeaderNavbar from "./components/template/HeaderNavbar.vue";*/
+import FooterRodape from "./components/template/FooterRodape.vue";
 
 export default {
-  components: { HeaderNavbar }
-}
+  components: { FooterRodape },
+};
 </script>
 <style>
 </style>

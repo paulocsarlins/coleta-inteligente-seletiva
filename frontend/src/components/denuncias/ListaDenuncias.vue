@@ -1,9 +1,10 @@
 <template>
   <div>
+    <user-header-navbar/>
     <nav class="menu-breadcrumb animate__animated animate__fadeIn">
       <div class="nav-wrapper">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Início</a>
+          <a href="#!" class="breadcrumb" v-on:click="HomeUser">Início</a>
           <a href="#!" class="breadcrumb">Denúncias</a>
           <a href="#!" class="breadcrumb">Lista de denúncias</a>
         </div>
@@ -60,7 +61,9 @@
 
 <script>
 import axios from 'axios'
+import UserHeaderNavbar from '../user/UserHeaderNavbar.vue';
 export default {
+  components: { UserHeaderNavbar },
   name: 'lista-denuncias',
   data(){
     return {
@@ -83,6 +86,9 @@ export default {
   methods: {
     TelaCadastroDenuncias() {
       this.$router.push({ name: "CadastroDenuncias" });
+    },
+    TelaHomeUser() {
+      this.$router.push({ name: "HomeUser" });
     },
 
     loadDenuncias() {
