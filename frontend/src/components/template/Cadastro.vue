@@ -3,9 +3,10 @@
     <div class="cadastro-form card">
       <div class="row">
         <form class="col s12">
-
           <div class="title-login">
-            <a v-on:click="TelaLogin">LOGIN <i class="fas fa-angle-double-right"></i></a>
+            <a v-on:click="TelaLogin"
+              >LOGIN <i class="fas fa-angle-double-right"></i
+            ></a>
           </div>
           <div class="title-cadastro">
             <a>CADASTRE-SE</a>
@@ -65,16 +66,20 @@
           </div>
           <div class="row">
             <a
-              v-on:click="cadastrar"
+              v-on:click="insertCadastro"
               class="waves-effect waves-light btn btn-large botao-cadastro"
               >CADASTRAR</a
             >
           </div>
           <div class="row">
-            <p class="cancelar-cadastro" v-on:click="TelaHome">Cancelar Cadastro</p>
+            <p class="cancelar-cadastro" v-on:click="TelaHome">
+              Cancelar Cadastro
+            </p>
           </div>
           <div class="row">
-            <p class="efetuar-login" v-on:click="TelaLogin">Deseja efetuar seu Login?</p>
+            <p class="efetuar-login" v-on:click="TelaLogin">
+              Deseja efetuar seu Login?
+            </p>
           </div>
         </form>
       </div>
@@ -83,6 +88,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Cadastro",
 
@@ -99,11 +106,38 @@ export default {
     TelaLogin() {
       this.$router.push({ name: "Login" });
     },
-     TelaHome() {
+    TelaHome() {
       this.$router.push({ name: "Home" });
     },
 
-    cadastrar: function () {
+    created: function () {
+      this.loadCadastros();
+    },
+    insertCadastro() {
+      if(
+      this.nome == "" ||
+      this.email == "" ||
+      this.senha == "" ||
+      this.confirmacaoSenha == ""
+    ){
+      alert('Os campos devem ser preenchidos')
+    }
+      
+      axios
+        .post("http://localhost:8000/api/addcadastro/", {
+          nome: this.nome,
+          email: this.email,
+          senha: this.senha,
+          confirmacaoSenha: this.confirmacaoSenha,
+        })
+        .then(() => {
+          alert("Cadastro feito com sucesso!");
+          this.loadCadastros();
+        })
+        .catch((error) => console.log(error));
+    },
+
+   /* cadastrar: function () {
       if (
         this.nome == "" ||
         this.email == "" ||
@@ -126,7 +160,7 @@ export default {
         this.senha = "";
         this.confirmacaoSenha = "";
       }
-    },
+    },*/
   },
 };
 </script>
@@ -137,7 +171,7 @@ export default {
   width: 35vw;
   margin-left: 45vw;
   padding: 25px;
-  background: #E5E5E5;
+  background: #e5e5e5;
   margin-top: 2%;
 }
 
