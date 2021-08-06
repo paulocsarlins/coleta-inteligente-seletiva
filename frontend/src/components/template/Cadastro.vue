@@ -65,11 +65,7 @@
             </div>
           </div>
           <div class="row">
-            <a
-              v-on:click="insertCadastro"
-              class="waves-effect waves-light btn btn-large botao-cadastro"
-              >CADASTRAR</a
-            >
+            <a v-on:click="insertCadastro()" class="waves-effect waves-light btn btn-large botao-cadastro">CADASTRAR</a>
           </div>
           <div class="row">
             <p class="cancelar-cadastro" v-on:click="TelaHome">
@@ -123,44 +119,15 @@ export default {
       alert('Os campos devem ser preenchidos')
     }
       
-      axios
-        .post("http://localhost:8000/api/addcadastro/", {
-          nome: this.nome,
-          email: this.email,
-          senha: this.senha,
-          confirmacaoSenha: this.confirmacaoSenha,
-        })
+      axios.post("http://localhost:8000/api/addcadastro/", { nome:this.nome, email:this.email, senha:this.senha, confirmacaoSenha:this.confirmacaoSenha })
         .then(() => {
           alert("Cadastro feito com sucesso!");
-          this.loadCadastros();
+          
         })
         .catch((error) => console.log(error));
     },
 
-   /* cadastrar: function () {
-      if (
-        this.nome == "" ||
-        this.email == "" ||
-        this.senha == "" ||
-        this.confirmacaoSenha == "" ||
-        this.senha != this.confirmacaoSenha
-      ) {
-        alert("Preencha todos os campos com dados válidos!");
-      } else {
-        ({
-          nome: this.nome,
-          email: this.email,
-          senha: this.senha,
-          confirmacaoSenha: this.confirmacaoSenha,
-        });
-        this.$router.push({ name: "Login" });
-        alert("Dados cadastrados com sucesso!");
-        this.nome = "";
-        this.email = "";
-        this.senha = "";
-        this.confirmacaoSenha = "";
-      }
-    },*/
+ 
   },
 };
 </script>
