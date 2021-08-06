@@ -152,6 +152,7 @@ export default {
         })
         .then(() => {
           alert("Denúncia criada com sucesso!");
+          this.$router.push({ name: "ListaDenuncias" });
         })
         .catch((error) => console.log(error));
     },
