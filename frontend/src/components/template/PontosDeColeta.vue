@@ -1,9 +1,11 @@
 <template>
   <div>
+    <user-header-navbar />
+
     <nav class="menu-breadcrumb animate__animated animate__fadeIn">
       <div class="nav-wrapper">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Início</a>
+          <a href="#!" class="breadcrumb" v-on:click="HomeUser">Início</a>
           <a href="#!" class="breadcrumb">Pontos de Coleta</a>
         </div>
       </div>
@@ -62,7 +64,10 @@
 </template>
 
 <script>
+import UserHeaderNavbar from '../user/UserHeaderNavbar.vue';
+
 export default {
+  components: { UserHeaderNavbar },
   name: "pontos-de-coleta",
   data() {
     return {

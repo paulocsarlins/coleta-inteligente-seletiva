@@ -1,36 +1,33 @@
 <template>
   <div>
-    <header-navbar/>
+    <user-header-navbar/>
     <nav class="menu-breadcrumb animate__animated animate__fadeIn">
       <div class="nav-wrapper">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Início</a>
+          <a href="#!" class="breadcrumb" >Início</a>
         </div>
       </div>
     </nav>
     <div class="container">
       <img class="img-home" src="https://i.ibb.co/cLXgBjD/cil.png" alt="" />
-      <form class="form-login-cadastro">
+      <form class="form-user">
         <div class="row">
-          <h1 class="title1">Transforme o mundo ao seu redor</h1>
+          <h1 class="title1">Seja bem-vindo! </h1>
           <h3 class="title2">
-            Mude seus hábitos e sua formar de descartar seu lixo!
+            Que bom te ter na família, faremos uma grande mudança.
           </h3>
 
-          <form class="for-login-cadastro">
-            <h5 class="title3">Faça parte dessa mudança!</h5>
-            <a
-              v-on:click="TelaLogin"
-              class="waves-effect waves-light btn btn-large botao-login"
-              >LOGIN</a
-            >
-            <h6 class="title3">OU</h6>
-            <a
-              v-on:click="TelaCadastro"
-              class="waves-effect waves-light btn btn-large botao-cadastrar"
-              >CADASTRAR</a
-            >
-          </form>
+          <a
+            v-on:click="TelaPontosDeColeta"
+            class="waves-effect waves-light btn btn-large botao-coleta"
+            ><i class="fas fa-map-marked-alt"></i> Pontos de Coleta</a
+          >
+
+          <a
+            v-on:click="TelaDenuncia"
+            class="waves-effect waves-light btn btn-large botao-denuncia"
+            ><i class="fas fa-clipboard-list"></i> Denúncias</a
+          >
         </div>
       </form>
     </div>
@@ -38,19 +35,19 @@
 </template>
 
 <script>
-import HeaderNavbar from './HeaderNavbar.vue';
+import UserHeaderNavbar from '../user/UserHeaderNavbar.vue';
 export default {
-  components: { HeaderNavbar },
-  name: "home",
+  components: { UserHeaderNavbar },
+  name: "home-user",
   data() {
     return {};
   },
   methods: {
-    TelaLogin() {
-      this.$router.push({ name: "Login" });
+    TelaDenuncia() {
+      this.$router.push({ name: "ListaDenuncias" });
     },
-    TelaCadastro() {
-      this.$router.push({ name: "Cadastro" });
+    TelaPontosDeColeta() {
+      this.$router.push({ name: "PontosDeColeta" });
     },
   },
   created: function () {},
@@ -89,42 +86,35 @@ body {
 .title3 {
   font-weight: bold;
 }
-.form-login-cadastro {
+.form-user {
   margin-left: -1vw;
   text-align: center;
   width: 50%;
   background: white;
   border-radius: 50px;
 }
-.for-login-cadastro {
-  text-align: center;
-  padding: 15px;
-  margin-left: 25%;
-  margin-right: 15vw;
-  background: #c4c4c4;
-  border-radius: 50px;
-  margin-top: 13%;
-}
 
-.botao-cadastrar,
-.botao-login {
+.botao-coleta,
+.botao-denuncia {
   width: 50%;
   margin-left: 0%;
-  margin-right: 0%;
+  margin-right: 1%;
   border-radius: 150px;
   font-weight: bold;
+  margin-top: 5%;
+  font-size: 2rem;
 }
 
-.botao-cadastrar,
-.botao-login {
+.botao-coleta,
+.botao-denuncia {
   background: white;
   color: #444444 !important;
   border: 1px solid #757575 !important;
   font-weight: bold;
 }
 
-.botao-cadastrar:hover,
-.botao-login:hover {
+.botao-coleta:hover,
+.botao-denuncia:hover {
   background: #757575 !important;
   color: white !important;
 }
